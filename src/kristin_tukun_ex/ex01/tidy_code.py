@@ -24,7 +24,7 @@ def random_number():
     This is a function returns a number between 2 and 12.
     :return: a number between 2 and 12
     """
-    return randint(2, 12)
+    return randint(1, 6) + randint(1,6)
 
 
 def is_equal(arg1, arg2):
