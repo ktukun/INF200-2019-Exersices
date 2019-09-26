@@ -1,14 +1,14 @@
 
 
 def bubble_sort(data):
-    typo = type(data)
+    data_type = type(data)
     data = list(data)
     n = len(data)
     for i in range(n-1):
         for j in range(0, n - i - 1):
             if data[j] > data[j + 1]:
-                data[j], data[j+1] = data[j+1], data[j]
-    return typo(data)
+                data[j], data[j + 1] = data[j + 1], data[j]
+    return data_type(data)
 
 
 if __name__ == "__main__":
