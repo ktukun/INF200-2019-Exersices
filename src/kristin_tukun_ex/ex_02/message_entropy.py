@@ -6,7 +6,7 @@ def letter_freq(txt):
 def entropy(message):
     from math import log2
     counted_message = letter_freq(message)
-    n = len(counted_message)
+    n = sum(counted_message.values())
     h = []
     for n_i in counted_message:
         p_i = counted_message[n_i] / n
