@@ -1,4 +1,10 @@
 def bubble_sort(data):
+    """
+    A function that has a tuple as an input and then sorts this list by comparing all elements in for loops.
+
+    :param data: A tuple that consists of numbers.
+    :return: A new list that is a sorted version of the list.
+    """
     sort_data = list(data)
     length_data = len(sort_data) - 1
     for j in range(0, length_data):
