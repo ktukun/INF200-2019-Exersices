@@ -1,10 +1,14 @@
+from collections import Counter
+
+
 def char_counts(textfilename):
     """
-    A function that converts a message to utf8 numbers, and counts how many times this number occurs.
+    A function that converts a message to utf8 numbers, and counts how many
+    times this number occurs.
     :param textfilename: A file with text
-    :return: A dictionary containing the number used in the message and how many times the occur.
+    :return: A dictionary containing the number used in the message and
+    how many times they occur.
     """
-    from collections import Counter
     with open(textfilename, encoding='utf-8') as f:
         file = f.read()
         utf8_translated = []

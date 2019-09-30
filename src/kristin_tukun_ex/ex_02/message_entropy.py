@@ -1,11 +1,14 @@
+from collections import Counter
+
+
 def letter_freq(txt):
     """
-    This is a function with text as input, it will then count occurrence of letters and signs in the text. It does not
+    This is a function with text as input, it will then count occurrence of
+    letters and signs in the text. It does not
     differentiate on upper an lowercase letters.
     :param txt: A text string
     :return: A list of number of occurrences.
     """
-    from collections import Counter
     return Counter(txt.lower())
 
 
