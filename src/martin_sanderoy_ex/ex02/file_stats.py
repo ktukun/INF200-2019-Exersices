@@ -1,5 +1,14 @@
-def char_counts(textfilename):
-    pass
+from collections import Counter
+
+
+def char_counts(text_filename):
+    with open(text_filename, 'rt', encoding='utf-8') as file:
+        text = file.read()
+        file.close()
+    ordinated = []
+    for letter in text:
+        ordinated.append(ord(letter))
+    return Counter(ordinated)
 
 
 if __name__ == '__main__':
