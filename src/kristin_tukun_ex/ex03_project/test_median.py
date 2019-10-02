@@ -39,7 +39,9 @@ def test_value_error():
 
 def test_original_data_unchanged():
     list = [3, 6, 1, 6]
-    
+    list_save = list
+    median(list)
+    assert list is list_save
 
 
 
