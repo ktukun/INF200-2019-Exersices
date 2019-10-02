@@ -65,9 +65,12 @@ def test_empty_element():
         median([])
 
 
-def test_unordered_elements():
+def test_original_data_unchanged():
     data = [3, 2, 5, 1, 4]
     data_save = data
     median(data)
     assert data is data_save
 
+def test_tuple():
+    data = (1, 2, 3, 4)
+    assert median(data) == 2.5
