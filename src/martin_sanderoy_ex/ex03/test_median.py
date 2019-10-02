@@ -2,15 +2,13 @@
 
 __author__ = 'Martin Sanderøy'
 __email__ = 'martsand@nmbu.no'
+import pytest
+
 """
 median function is copied from yngvem from github.
 But had to change it since it failed for single element.
+Also changed it to raise ValueError for empty list.
 """
-
-from random import randrange, uniform
-import pytest
-
-
 def median(data):
     """
     Returns median of data.
@@ -70,6 +68,7 @@ def test_original_data_unchanged():
     data_save = data
     median(data)
     assert data is data_save
+
 
 def test_tuple():
     data = (1, 2, 3, 4)
