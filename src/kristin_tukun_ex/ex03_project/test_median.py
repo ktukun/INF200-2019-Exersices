@@ -4,6 +4,7 @@ import pytest
 __author__ = 'Kristin Tukun'
 __email__ = 'kritu@nmbu.no'
 
+
 def test_one_element_list():
     assert median([1]) == 1
 
@@ -31,7 +32,7 @@ def test_reversed_ordered_elements():
 
 def test_random_ordered_elements():
     list_random_ordered = [5, 1, 15, 33, 20, 4, 7]
-    assert median(list_random_ordered) ==7
+    assert median(list_random_ordered) == 7
 
 
 def test_value_error():
@@ -45,8 +46,7 @@ def test_original_data_unchanged():
     median(original)
     assert original is original_save
 
+
 def test_tuples():
     data_tuple = (3, 6, 1, 6)
     assert median(data_tuple) == 4.5
-
-
