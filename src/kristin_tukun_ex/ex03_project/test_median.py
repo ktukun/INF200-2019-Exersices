@@ -1,6 +1,8 @@
 from kristin_tukun_ex.ex03_project.median import median
 import pytest
 
+__author__ = 'Kristin Tukun'
+__email__ = 'kritu@nmbu.no'
 
 def test_one_element_list():
     assert median([1]) == 1
@@ -38,10 +40,13 @@ def test_value_error():
 
 
 def test_original_data_unchanged():
-    list = [3, 6, 1, 6]
-    list_save = list
-    median(list)
-    assert list is list_save
+    original = [3, 6, 1, 6]
+    original_save = original
+    median(original)
+    assert original is original_save
 
+def test_tuples():
+    data_tuple = (3, 6, 1, 6)
+    assert median(data_tuple) == 4.5
 
 
