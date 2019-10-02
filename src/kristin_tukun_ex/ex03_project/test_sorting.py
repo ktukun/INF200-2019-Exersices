@@ -2,7 +2,6 @@
 from kristin_tukun_ex.ex_02.bubble_sort import bubble_sort
 import random
 import numpy as np
-import pytest
 
 __author__ = 'Kristin Tukun'
 __email__ = 'kritu@nmbu.no'
