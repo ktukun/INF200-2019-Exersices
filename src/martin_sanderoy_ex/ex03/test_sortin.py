@@ -2,8 +2,6 @@
 
 __author__ = 'Martin Sanderøy'
 __email__ = 'martsand@nmbu.no'
-
-
 from random import randrange, uniform
 
 
@@ -85,7 +83,7 @@ def test_sorting():
     ensure that they are sorted correctly. These could be lists of
     numbers of different length or lists of strings.
     """
-    data = []  # Making a list for test with random numbers and length.
+    data = []  """ Making a list for test with random numbers and length."""
     for _ in range(randrange(0, 20)):
         data.append(uniform(-20, 20))
 
@@ -93,7 +91,7 @@ def test_sorting():
     for small, large in zip(sorted_list[:-1], sorted_list[1:]):
         assert small <= large
 
-    # Test if it works on an equal tuple
+    """ Test if it works on an equal tuple """
     sorted_tuple = bubble_sort(tuple(data))
     for small, large in zip(sorted_tuple[:-1], sorted_tuple[1:]):
         assert small <= large

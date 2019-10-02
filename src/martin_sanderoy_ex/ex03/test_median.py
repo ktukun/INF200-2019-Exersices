@@ -9,6 +9,8 @@ median function is copied from yngvem from github.
 But had to change it since it failed for single element.
 Also changed it to raise ValueError for empty list.
 """
+
+
 def median(data):
     """
     Returns median of data.
