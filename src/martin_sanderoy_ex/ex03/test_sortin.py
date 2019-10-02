@@ -83,7 +83,9 @@ def test_sorting():
     ensure that they are sorted correctly. These could be lists of
     numbers of different length or lists of strings.
     """
-    data = []  """ Making a list for test with random numbers and length."""
+
+    """ Making a list for test with random numbers and length."""
+    data = []
     for _ in range(randrange(0, 20)):
         data.append(uniform(-20, 20))
 
