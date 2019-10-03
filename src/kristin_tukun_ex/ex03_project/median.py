@@ -12,7 +12,7 @@ def median(data):
         raise ValueError('The list must contain elements')
     if length_data == 1:
         return sorted_data[0]
-    elif length_data% 2 ==1:
+    elif length_data % 2 == 1:
         return sorted_data[length_data//2]
     else:
         return (0.5 * (sorted_data[length_data//2 - 1]
