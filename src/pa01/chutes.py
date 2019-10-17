@@ -42,10 +42,8 @@ def single_game(num_players):
             pos_player[player] = pos_player[player] + randint(1, 6)
             num_moves[player] = num_moves[player] + 1
 
-            for key in snakes_ladders.keys():
-
-                if pos_player[player] == key:
-                    pos_player[player] = snakes_ladders[key]
+            if snakes_ladders.get(pos_player[player]) is not None:
+                pos_player[player] = snakes_ladders[pos_player[player]]
 
     return num_moves
 
