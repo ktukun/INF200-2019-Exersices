@@ -15,8 +15,6 @@ def single_game(num_players):
     num_moves : int
         Number of moves the winning player needed to reach the goal
     """
-
-
     snakes_ladders = {1: 40,
                       8: 10,
                       36: 52,
@@ -37,15 +35,14 @@ def single_game(num_players):
 
     while max(pos_player) < 90:
 
-        for player in range(len(pos_player)):
-
-            pos_player[player] = pos_player[player] + randint(1, 6)
+        for player, position in enumerate(pos_player):
+            pos_player[player] = position + randint(1, 6)
             num_moves[player] = num_moves[player] + 1
-
-            if snakes_ladders.get(pos_player[player]) is not None:
-                pos_player[player] = snakes_ladders[pos_player[player]]
+            if snakes_ladders.get(position) is not None:
+                pos_player[player] = snakes_ladders[position]
 
     return num_moves
+
 
 def multiple_games(num_games, num_players):
     """
