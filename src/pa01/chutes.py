@@ -31,13 +31,13 @@ def single_game(num_players):
                       87: 70, }
 
     pos_player = [0] * num_players
-    num_moves = [0] * num_players
+    num_moves = 0
 
     while max(pos_player) < 90:
 
         for player, position in enumerate(pos_player):
             pos_player[player] = position + randint(1, 6)
-            num_moves[player] = num_moves[player] + 1
+            num_moves = num_moves + 1
             if snakes_ladders.get(position) is not None:
                 pos_player[player] = snakes_ladders[position]
 
