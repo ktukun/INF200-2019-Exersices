@@ -17,41 +17,37 @@ def single_game(num_players):
     """
 
 
-snakes_ladders = {1: 40,
-                  8: 10,
-                  36: 52,
-                  43: 62,
-                  49: 79,
-                  65: 82,
-                  68: 85,
-                  24: 5,
-                  33: 3,
-                  42: 30,
-                  56: 37,
-                  64: 27,
-                  74: 12,
-                  87: 70,
-                  }
+    snakes_ladders = {1: 40,
+                      8: 10,
+                      36: 52,
+                      43: 62,
+                      49: 79,
+                      65: 82,
+                      68: 85,
+                      24: 5,
+                      33: 3,
+                      42: 30,
+                      56: 37,
+                      64: 27,
+                      74: 12,
+                      87: 70, }
 
-number_of_players = 4
+    pos_player = [0] * num_players
+    num_moves = [0] * num_players
 
-position_players = [0] * number_of_players
-number_of_rolls = [0] * number_of_players
+    while max(pos_player) < 90:
 
-while max(position_players) < 90:
+        for player in range(len(pos_player)):
 
-    for player in range(len(position_players)):
+            pos_player[player] = pos_player[player] + randint(1, 6)
+            num_moves[player] = num_moves[player] + 1
 
-        position_players[player] = position_players[player] + randint(1, 6)
-        number_of_rolls[player] = number_of_rolls[player] + 1
+            for key in snakes_ladders.keys():
 
-        for key in snakes_ladders.keys():
+                if pos_player[player] == key:
+                    pos_player[player] = snakes_ladders[key]
 
-            if position_players[player] == key:
-                position_players[player] = snakes_ladders[key]
-
-print('You have won!')
-
+    return num_moves
 
 def multiple_games(num_games, num_players):
     """
