@@ -1,5 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Oct 17 12:47:14 2019
+
+@author: Martin Sanderøy and Kristin Tukun
+@email: martsand@nmbu.no and ktukun@nmbu.no
+"""
 from random import randint
 import random
+from statistics import median, mean
 
 
 def single_game(num_players):
@@ -34,7 +42,7 @@ def single_game(num_players):
     pos_player = [0] * num_players
     num_moves = 0
 
-    while max(pos_player) < 90:
+    while max(pos_player) <= 90:
 
         for player, position in enumerate(pos_player):
             pos_player[player] = position + randint(1, 6)
@@ -59,7 +67,7 @@ def multiple_games(num_games, num_players):
     Returns
     -------
     num_moves : list
-        List with the numbedr of moves needed in each game.
+        List with the number of moves needed in each game.
     """
     num_moves = [0] * num_games
     for game in range(num_games):
@@ -90,3 +98,11 @@ def multi_game_experiment(num_games, num_players, seed):
     random.seed(seed)
 
     return multiple_games(num_games, num_players)
+
+
+if __name__ == '__main__':
+    duration = multi_game_experiment(100, 4, random.random())
+    print('minimum duration = {}, maximum duration = {}'.format(min(duration),
+                                                                max(duration)))
+    print('median duration = ', median(duration))
+    print('mean duration = ', mean(duration))
