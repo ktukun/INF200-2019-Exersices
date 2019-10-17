@@ -1,6 +1,6 @@
 from random import randint
 import random
-
+from statistics import median, mean
 
 def single_game(num_players):
     """
@@ -90,3 +90,11 @@ def multi_game_experiment(num_games, num_players, seed):
     random.seed(seed)
 
     return multiple_games(num_games, num_players)
+
+
+if __name__ == '__main__':
+    duration = multi_game_experiment(100, 4, random.random())
+    print('minimum duration = {}, maximum duration = {}'.format(min(duration),
+                                                                max(duration)))
+    print('median duration = ', median(duration))
+    print('mean duration = ', mean(duration))
