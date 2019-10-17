@@ -57,7 +57,7 @@ def test_original_unchanged():
     data = [3, 2, 1]
     data_save = data
     sorted_data = bubble_sort(data)
-    assert data_save is data is not sorted_data
+    assert (data_save is data) is not sorted_data
 
 
 def test_sort_sorted():
