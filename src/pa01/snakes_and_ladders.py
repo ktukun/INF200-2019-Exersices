@@ -42,7 +42,7 @@ def single_game(num_players):
     pos_player = [0] * num_players
     num_moves = 0
 
-    while max(pos_player) < 90:
+    while max(pos_player) <= 90:
 
         for player, position in enumerate(pos_player):
             pos_player[player] = position + randint(1, 6)
