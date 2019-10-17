@@ -1,6 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Oct 17 12:47:14 2019
+
+@author: Martin Sanderøy and Kristin Tukun
+@email: martsand@nmbu.no and ktukun@nmbu.no
+"""
 from random import randint
 import random
 from statistics import median, mean
+
 
 def single_game(num_players):
     """
