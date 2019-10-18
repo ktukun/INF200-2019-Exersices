@@ -3,7 +3,7 @@
 Created on Thu Oct 17 12:47:14 2019
 
 @author: Martin Sanderøy and Kristin Tukun
-@email: martsand@nmbu.no and ktukun@nmbu.no
+@email: martsand@nmbu.no and kristin.tukun@nmbu.no
 """
 from random import randint
 import random
