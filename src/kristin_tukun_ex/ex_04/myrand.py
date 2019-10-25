@@ -1,4 +1,4 @@
-class LCGRand(self):
+class LCGRand:
 
     def __init__(self, number_seed):
 
@@ -11,8 +11,15 @@ class LCGRand(self):
         return self.random_number
 
 
-class ListRand(self):
+class ListRand:
 
     def __init__(self, list_numbers):
+        self.list_numbers = list_numbers
+        self.idx = 0
 
-        self. = seed
+    def rand(self):
+        if self.idx == len(self.list_numbers):
+            return RuntimeError
+        number = self.list_numbers[self.idx]
+        self.idx += 1
+        return number
