@@ -17,9 +17,7 @@ class LCGRand:
 
 class ListRand(self, number_list):
     def __init__(self):
-        a = 7 ** 5 = 16807
-        m = 2 ** 31 - 1
-        r[n + 1] = a * r[n] % m
+        self.random_numbers = number_list
 
     def __rand__(self, other):(self):
         return self.width * self.height
