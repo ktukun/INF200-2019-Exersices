@@ -15,7 +15,6 @@ class Walker:
             self.position -= 1
         else:
             self.position += 1
-        return self.position
 
     def is_at_home(self):
         return self.position == self.home
@@ -26,12 +25,25 @@ class Walker:
     def get_steps(self):
         return self.steps
 
+    def walk_home(self):
+        while Walker.is_at_home(self) is False:
+            Walker.move(self)
+            if self.steps > 1000000:
+                break
+
 
 if __name__ == "__main__":
-    start_position = 0
-    home_position = [1, 2, 5, 10, 20, 50, 100]
-    number_of_steps = []
 
-    for distance in home_position:
+    start = 0
+    home = [1, 2, 5, 10, 20, 50, 100]
+
+    for distance in home:
+        number_of_steps = [] * 5
+
         for _ in range(5):
-            Walker.move()
+            student = Walker(start, distance)
+            student.walk_home()
+            antall = student.get_steps()
+            number_of_steps.append(antall)
+        print('Distance: {0}, Path lengths: {1}'.format(distance,
+                                                        number_of_steps))
