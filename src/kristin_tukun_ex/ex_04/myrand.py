@@ -14,10 +14,17 @@ class LCGRand:
 class ListRand:
 
     def __init__(self, list_numbers):
-        self.list_numbers = list_numbers
+        self.numbers = list_numbers.copy()
         self.idx = 0
 
     def rand(self):
-        if len(self.list_numbers) == 0:
-            return RuntimeError
-        return self.list_numbers.pop(0)
+        if len(self.numbers) == 0:
+            raise RuntimeError
+        return self.numbers.pop(0)
+
+
+if __name__ == "__main__":
+    test_numbers = [1, 3, 5, 2, 8, 3]
+    first_numbers = ListRand(test_numbers)
+    for _ in range(8):
+        print(first_numbers.rand())
