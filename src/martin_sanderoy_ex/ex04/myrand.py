@@ -15,12 +15,15 @@ class LCGRand:
         return self.random_number
 
 
-class ListRand(self, number_list):
-    def __init__(self):
+class ListRand:
+    def __init__(self, number_list):
         self.random_numbers = number_list
 
-    def __rand__(self, other):(self):
-        return self.width * self.height
+    def rand(self):
+        if len(self.random_numbers) == 0:
+            return RuntimeError
+
+        return self.random_numbers.pop(0)
 
 
 
