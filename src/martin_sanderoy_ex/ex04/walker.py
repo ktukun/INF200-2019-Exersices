@@ -44,6 +44,4 @@ if __name__ == '__main__':
             student = Walker(start, home)
             student.walk_home()
             students.append(student.get_steps())
-        print('Distance:  ',distance, students)
-
-
+        print('Distance: {0} -> Path lengths: {1}'.format(distance, students))
