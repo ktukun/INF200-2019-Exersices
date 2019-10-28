@@ -18,8 +18,6 @@ class ListRand:
         self.idx = 0
 
     def rand(self):
-        if self.idx == len(self.list_numbers):
+        if len(self.list_numbers) == 0:
             return RuntimeError
-        number = self.list_numbers[self.idx]
-        self.idx += 1
-        return number
+        return self.list_numbers.pop(0)
