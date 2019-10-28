@@ -18,7 +18,6 @@ class Walker:
             self.position -= 1
         else:
             self.position += 1
-        return self.position
 
     def is_at_home(self):
         return self.position == self.home
