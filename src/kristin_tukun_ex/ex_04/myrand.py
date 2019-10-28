@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+__author__ = 'Kristin Tukun'
+__email__ = 'kristin.tukun@nmbu.no'
+
+
 class LCGRand:
 
     def __init__(self, number_seed):
