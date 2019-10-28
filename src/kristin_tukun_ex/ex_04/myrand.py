@@ -24,7 +24,15 @@ class ListRand:
 
 
 if __name__ == "__main__":
+
+    test_seeds = [1, 5, 10, 100]
+
+    for seed in test_seeds:
+        print('Seed: {0} gives a random number {1}'
+              .format(seed, LCGRand(seed).rand()))
+
     test_numbers = [1, 3, 5, 2, 8, 3]
     first_numbers = ListRand(test_numbers)
-    for _ in range(8):
-        print(first_numbers.rand())
+
+    for _ in test_numbers:
+        print('Number from the list:', first_numbers.rand())
