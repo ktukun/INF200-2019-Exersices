@@ -27,3 +27,11 @@ class Walker:
         return self.steps
 
 
+if __name__ == "__main__":
+    start_position = 0
+    home_position = [1, 2, 5, 10, 20, 50, 100]
+    number_of_steps = []
+
+    for distance in home_position:
+        for _ in range(5):
+            Walker.move()
