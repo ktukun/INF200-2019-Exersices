@@ -37,6 +37,17 @@ class RandIter:
         self.length = length
         self.num_generated_numbers = None
 
+    def infinite_random_sequence(self):
+        """
+        Generate an infinite sequence of random numbers.
+
+        Yields
+        ------
+        int
+            A random number.
+        """
+        return RandIter()
+
     def __iter__(self):
         """
         Initialise the iterator.
@@ -50,8 +61,10 @@ class RandIter:
         RuntimeError
             If iter is called twice on the same RandIter object.
         """
-
-        #self.num__generated_numbers = 0
+        if self.num_generated_numbers is not None:
+            raise RuntimeError(
+                'Can only be initialised as an iterator once')
+        self.num_generated_numbers = 0
         return self
 
     def __next__(self):
@@ -70,15 +83,22 @@ class RandIter:
         StopIteration
             If ``self.length`` random numbers are generated.
         """
-        if self.num__generated_numbers is None:
+        if self.num_generated_numbers is None:
             raise RuntimeError(f'{type(self)} is not initialised as an iterator.')
-        if self.num__generated_numbers >= self.length:
+        if self.num_generated_numbers >= self.length:
             raise StopIteration
-        self.num__generated_numbers += 1
-        return self.generator
+        random_number = self.generator.rand()
+        self.num_generated_numbers += 1
+        return random_number
 
 
 if __name__ == "__main__":
-    random_number_generator = LCGRand(1)
-    for rand in generator.random_sequence(10):
+    random_generator = LCGRand(1)
+    for rand in random_generator.random_sequence(10):
         print(rand)
+
+
+    for i, rand in random_generator.infinite_random_sequence():
+        print(f'The {i}-th random number is {rand}')
+        if i > 100:
+            break
