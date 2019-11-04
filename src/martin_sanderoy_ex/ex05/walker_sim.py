@@ -6,10 +6,11 @@ import random
 
 
 class Walker:
-    def __init__(self, initial_position, home_position):
-        self.position = initial_position
-        self.home = home_position
-        self.distance = abs(initial_position - home_position)
+    def __init__(self, start, home):
+        self.start = start
+        self.position = start
+        self.home = home
+        self.distance = abs(int(self.start) - int(self.home))
         self.steps = 0
 
     def move(self):
@@ -39,7 +40,7 @@ class Walker:
 
 
 class Simulation:
-    def __init__(self, start, home, seed):
+    def __init__(self, start, home, seed=None):
         """
         Initialise the simulation
 

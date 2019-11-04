@@ -8,7 +8,7 @@ from walker_sim import Walker, Simulation
 
 class BoundedWalker(Walker):
     def __init__(self, start, home, left_limit, right_limit):
-        super().__init__(self)
+        super().__init__(self, home)
         """
         Initialise the walker
         Arguments
@@ -41,7 +41,7 @@ class BoundedWalker(Walker):
 
 class BoundedSimulation(Simulation):
     def __init__(self, start, home, seed, left_limit, right_limit):
-        super().__init__(self)
+        super().__init__(self, home)
         """
         Initialise the simulation
         Arguments
@@ -67,7 +67,8 @@ class BoundedSimulation(Simulation):
         """
         Simulate single walk from start to home, returning number of steps.
         """
-        walk = BoundedWalker(self.start, self.home)
+        walk = BoundedWalker(self.start, self.home, self.left_limit,
+                             self.right_limit)
         walk.walk_home()
         return walk.get_steps()
 
@@ -88,10 +89,13 @@ The main section of the script shall simulate
 if __name__ == '__main__':
     left_boundary = [0, -10, -100, -1000, -10000]
     right_boundary = 20
+    right_limit = right_boundary
     start = 0
     home = 20
+    seed = 12345
     num_sims = 20
-    for left_boundary
-    sim = Simulation(start, home)
+    for left_limit in left_boundary:
+        sim = BoundedSimulation(start, home, seed, left_limit, right_limit)
+        print('left boundary: {} walk durations: {}'
+              .format(left_boundary, sim.run_simulation(num_sims)))
 
-    print('left boundary: {} walk durations: {}'.format(left_boundary,sim))
