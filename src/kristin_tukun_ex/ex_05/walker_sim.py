@@ -87,4 +87,30 @@ class Simulation:
         list[int]
             List with the number of steps per walk
         """
-        
+        walks_list = []*num_walks
+        for _ in range(num_walks):
+            walks_list.append(self.single_walk())
+
+        return walks_list
+
+
+if __name__ == "__main__":
+
+    # Simulation 1 with the two different seeds
+    sim_1_seed_1 = Simulation(0, 10, 12345)
+    sim_1_seed_11 = Simulation(0, 10, 12345)
+    sim_1_seed_2 = Simulation(0, 10, 54321)
+
+    # Simulation 2 with the two different seeds
+    sim_2_seed_1 = Simulation(10, 0, 12345)
+    sim_2_seed_11 = Simulation(10, 0, 12345)
+    sim_2_seed_2 = Simulation(10, 0, 54321)
+
+    # Printed the simulations with 20 walks
+    print(sim_1_seed_1.run_simulation(20))
+    print(sim_1_seed_11.run_simulation(20))
+    print(sim_1_seed_2.run_simulation(20))
+
+    print(sim_2_seed_1.run_simulation(20))
+    print(sim_2_seed_11.run_simulation(20))
+    print(sim_2_seed_2.run_simulation(20))
