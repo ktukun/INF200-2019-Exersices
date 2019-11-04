@@ -5,14 +5,33 @@ __email__ = 'martsand@nmbu.no'
 
 
 class LCGRand:
-    def __init__(self, input_seed):
-        self.random_number = input_seed
-        self.a = 7 ** 5
-        self.m = 2 ** 31 - 1
+    slope = 7 ** 5
+    congruence_class = 2 ** 31 - 1
+
+    def __init__(self, seed):
+        """
+        Initialise a linear congruence random number generator
+
+        Arguments
+        ---------
+        seed : int
+            The initial seed for the generator
+        """
+        self._hidden_state = seed
 
     def rand(self):
-        self.random_number = self.a * self.random_number % self.m
-        return self.random_number
+        """
+        Generate a single random number.
+
+        Returns
+        -------
+        int
+            A random integer
+        """
+        self._hidden_state *= self.slope
+        self._hidden_state %= self.congruence_class
+
+        return self._hidden_state
 
     def random_sequence(self, length):
         return RandIter(self, length)
@@ -44,6 +63,8 @@ class RandIter:
         RuntimeError
             If iter is called twice on the same RandIter object.
         """
+        if self.num_generated_numbers is not None:
+            raise RuntimeError('can only be initialised once')
         self.num_generated_numbers = 0
         return self
 
@@ -66,4 +87,4 @@ class RandIter:
         if self.num_generated_numbers >= self.length:
             raise StopIteration
         self.num_generated_numbers += 1
-        return self.generator
+        return self.generator.rand()
