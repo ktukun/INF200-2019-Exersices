@@ -100,5 +100,5 @@ if __name__ == '__main__':
     for left_limit in left_boundary:
         sim = BoundedSimulation(start, home, seed, left_limit, right_limit)
         print('left boundary: {} walk durations: {}'
-              .format(left_boundary, sim.run_simulation(num_sims)))
+              .format(left_limit, sim.run_simulation(num_sims)))
 
