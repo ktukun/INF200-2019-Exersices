@@ -2,6 +2,7 @@
 
 __author__ = 'Martin Sanderøy'
 __email__ = 'martsand@nmbu.no'
+import math
 
 
 class LCGRand:
@@ -36,9 +37,20 @@ class LCGRand:
     def random_sequence(self, length):
         return RandIter(self, length)
 
+    def infinite_random_sequence(self):
+        """
+        Generate an infinite sequence of random numbers.
+        Yields
+        ------
+        int
+            A random number.
+        """
+        return RandIter(self, math.inf)
+
 
 class RandIter:
-    def __init__(self, random_number_generator, length):
+    def __init__(self, random_number_generator, length, stop=True,
+                 max_iter=10**9):
         """
         Arguments
         ---------
@@ -49,8 +61,10 @@ class RandIter:
             The number of random numbers to generate
         """
         self.generator = random_number_generator
-        self.length = int(length)
+        self.length = length
         self.num_generated_numbers = None
+        self.stop = stop
+        self.max_iter = max_iter
 
     def __iter__(self):
         """
@@ -86,5 +100,22 @@ class RandIter:
             raise RuntimeError(f'{type(self)} is not initialised')
         if self.num_generated_numbers >= self.length:
             raise StopIteration
+        if self.stop and i > self.max_iter:
+            raise RuntimeError(f'reached maximum iterations = {10**9} '
+                               f'change it or set stop=False for true '
+                               f'infinite')
         self.num_generated_numbers += 1
         return self.generator.rand()
+
+
+if __name__ == '__main__':
+    generator = LCGRand(1)
+    for i, rand in enumerate(generator.random_sequence(10)):
+        print(f'The {i}th random_sequence number is {rand}')
+
+    for i, rand in enumerate(
+            generator.infinite_random_sequence()):
+        print(f'The {i}-th random number is {rand}')
+
+        if i > 100:
+            break
