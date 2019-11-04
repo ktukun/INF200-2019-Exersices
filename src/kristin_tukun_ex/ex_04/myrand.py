@@ -5,14 +5,14 @@ __email__ = 'kristin.tukun@nmbu.no'
 
 
 class LCGRand:
+    a = 7 ** 5
+    m = 2 ** 31 - 1
 
     def __init__(self, number_seed):
 
         self.random_number = number_seed
 
     def rand(self):
-        a = 7 ** 5
-        m = 2 ** 31 - 1
         self.random_number = a * self.random_number % m
         return self.random_number
 
