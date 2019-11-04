@@ -42,7 +42,8 @@ class BoundedWalker(Walker):
             else:
                 self.position += 1
 
-        else: pass
+        else:
+            pass
 
     def walk_home(self):
         while self.is_at_home() is False:
