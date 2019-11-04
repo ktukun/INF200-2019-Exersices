@@ -32,10 +32,11 @@ class Walker:
         """returns number of steps taken"""
         return self.steps
 
-    def walk_home(self):
-        """walks until the walker is home"""
-        while Walker.is_at_home(self) is False:
-            Walker.move(self)
+
+def walk_home(person):
+    """walks until the walker is home"""
+    while Walker.is_at_home(person) is False:
+        Walker.move(person)
 
 
 if __name__ == '__main__':
@@ -46,6 +47,6 @@ if __name__ == '__main__':
         distance = abs(home-start)
         for _ in range(5):
             student = Walker(start, home)
-            student.walk_home()
+            walk_home(student)
             students.append(student.get_steps())
         print('Distance: {0} -> Path lengths: {1}'.format(distance, students))

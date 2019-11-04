@@ -10,9 +10,7 @@ class LCGRand:
         self.a = 7 ** 5
         self.a = 2 ** 31 - 1
 
-
     def rand(self):
-
         self.random_number = self.a * self.random_number % self.a
         return self.random_number
 
