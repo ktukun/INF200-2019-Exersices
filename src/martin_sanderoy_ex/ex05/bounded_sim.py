@@ -2,14 +2,15 @@
 
 __author__ = 'Martin Sanderøy'
 __email__ = 'martsand@nmbu.no'
+import random
+from walker_sim import Walker, Simulation
 
 
-
-class BoundedWalker:
+class BoundedWalker(Walker):
     def __init__(self, start, home, left_limit, right_limit):
+        super().__init__(self)
         """
         Initialise the walker
-
         Arguments
         ---------
         start : int
@@ -21,13 +22,28 @@ class BoundedWalker:
         right_limit : int
            The right boundary  of walker movement
         """
+        self.start = start
+        self.home = home
+        self.left_limit = left_limit
+        self.right_limit = right_limit
+
+    def move(self):
+        """Equal chance to move backwards and forwards by 1 step,
+        but can not move beyond boundary limits."""
+        self.steps += 1
+        if random.randint(0, 1) == 0:
+            if self.position - 1 is not self.left_limit:
+                self.position -= 1
+        else:
+            if self.position + 1 is not self.right_limit:
+                self.position += 1
 
 
-class BoundedSimulation:
+class BoundedSimulation(Simulation):
     def __init__(self, start, home, seed, left_limit, right_limit):
+        super().__init__(self)
         """
         Initialise the simulation
-
         Arguments
         ---------
         start : int
@@ -41,3 +57,41 @@ class BoundedSimulation:
         right_limit : int
            The right boundary  of walker movement
         """
+        self.start = start
+        self.home = home
+        self.seed = seed
+        self.left_limit = left_limit
+        self.right_limit = right_limit
+
+    def single_walk(self):
+        """
+        Simulate single walk from start to home, returning number of steps.
+        """
+        walk = BoundedWalker(self.start, self.home)
+        walk.walk_home()
+        return walk.get_steps()
+
+
+"""
+Try to make as much use of the methods of the respective superclass as
+possible when implementing the subclasses!
+
+The main section of the script shall simulate
+
+-  20 walks from start 0 to home 20 for each of the following left
+   boundaries: 0, -10, -100, -1000, -10000. The right boundary shall be
+   20 in all cases.
+-  Print results as left boundary followed by a list of the 20 walk
+   durations for that left boundary.
+"""
+
+if __name__ == '__main__':
+    left_boundary = [0, -10, -100, -1000, -10000]
+    right_boundary = 20
+    start = 0
+    home = 20
+    num_sims = 20
+    for left_boundary
+    sim = Simulation(start, home)
+
+    print('left boundary: {} walk durations: {}'.format(left_boundary,sim))
