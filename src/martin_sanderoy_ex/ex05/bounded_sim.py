@@ -3,12 +3,13 @@
 __author__ = 'Martin Sanderøy'
 __email__ = 'martsand@nmbu.no'
 import random
-from walker_sim import Walker, Simulation
+from walker_sim import Walker
+from walker_sim import Simulation
 
 
 class BoundedWalker(Walker):
     def __init__(self, start, home, left_limit, right_limit):
-        super().__init__(self, home)
+        super(Walker, self).__init__()
         """
         Initialise the walker
         Arguments
@@ -24,6 +25,8 @@ class BoundedWalker(Walker):
         """
         self.start = start
         self.home = home
+        self.position = start
+        self.steps = 0
         self.left_limit = left_limit
         self.right_limit = right_limit
 
@@ -32,16 +35,16 @@ class BoundedWalker(Walker):
         but can not move beyond boundary limits."""
         self.steps += 1
         if random.randint(0, 1) == 0:
-            if self.position - 1 is not self.left_limit:
+            if self.position is not self.left_limit:
                 self.position -= 1
         else:
-            if self.position + 1 is not self.right_limit:
+            if self.position is not self.right_limit:
                 self.position += 1
 
 
 class BoundedSimulation(Simulation):
     def __init__(self, start, home, seed, left_limit, right_limit):
-        super().__init__(self, home)
+        super(Simulation,self).__init__()
         """
         Initialise the simulation
         Arguments
