@@ -44,7 +44,7 @@ class BoundedWalker(Walker):
 
 class BoundedSimulation(Simulation):
     def __init__(self, start, home, seed, left_limit, right_limit):
-        super(Simulation,self).__init__()
+        super(Simulation, self).__init__()
         """
         Initialise the simulation
         Arguments
@@ -101,4 +101,3 @@ if __name__ == '__main__':
         sim = BoundedSimulation(start, home, seed, left_limit, right_limit)
         print('left boundary: {} walk durations: {}'
               .format(left_limit, sim.run_simulation(num_sims)))
-
