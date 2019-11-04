@@ -20,6 +20,17 @@ class LCGRand:
     def random_sequence(self, length):
         return RandIter(self, length)
 
+    def infinite_random_sequence(self):
+        """
+        Generate an infinite sequence of random numbers.
+
+        Yields
+        ------
+        int
+            A random number.
+        """
+        return RandIter(self, 1000000)
+
 
 class RandIter:
     def __init__(self, random_number_generator, length):
@@ -36,17 +47,6 @@ class RandIter:
         self.generator = random_number_generator
         self.length = length
         self.num_generated_numbers = None
-
-    def infinite_random_sequence(self):
-        """
-        Generate an infinite sequence of random numbers.
-
-        Yields
-        ------
-        int
-            A random number.
-        """
-        return RandIter()
 
     def __iter__(self):
         """
@@ -84,7 +84,8 @@ class RandIter:
             If ``self.length`` random numbers are generated.
         """
         if self.num_generated_numbers is None:
-            raise RuntimeError(f'{type(self)} is not initialised as an iterator.')
+            raise RuntimeError(f'{type(self)} is not '
+                               f'initialised as an iterator.')
         if self.num_generated_numbers >= self.length:
             raise StopIteration
         random_number = self.generator.rand()
@@ -96,7 +97,6 @@ if __name__ == "__main__":
     random_generator = LCGRand(1)
     for rand in random_generator.random_sequence(10):
         print(rand)
-
 
     for i, rand in random_generator.infinite_random_sequence():
         print(f'The {i}-th random number is {rand}')
