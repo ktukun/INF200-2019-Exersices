@@ -2,6 +2,8 @@
 
 __author__ = 'Kristin Tukun'
 __email__ = 'ktukun@nmbu.no'
+import random
+
 
 class Walker:
 
@@ -55,7 +57,7 @@ class Simulation:
         """
         self.start = start
         self.home = home
-        self.seed =
+        self.seed = seed
 
     def single_walk(self):
         """
@@ -66,6 +68,10 @@ class Simulation:
         int
             The number of steps taken
         """
+        walker = Walker(self.start, self.home)
+        while walker.is_at_home() is False:
+            walker.move()
+        return walker.get_steps()
 
     def run_simulation(self, num_walks):
         """
@@ -81,3 +87,4 @@ class Simulation:
         list[int]
             List with the number of steps per walk
         """
+        
