@@ -56,6 +56,7 @@ class Simulation:
         self.start = start
         self.home = home
         self.seed = seed
+        random.seed(self.seed)
 
     def single_walk(self):
         """
@@ -84,7 +85,7 @@ class Simulation:
         list[int]
             List with the number of steps per walk
         """
-        random.seed(self.seed)
+
         walks = []*num_walks
         for _ in range(num_walks):
             walks.append(self.single_walk())

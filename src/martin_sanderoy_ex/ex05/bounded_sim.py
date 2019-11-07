@@ -9,7 +9,7 @@ from walker_sim import Simulation
 
 class BoundedWalker(Walker):
     def __init__(self, start, home, left_limit, right_limit):
-        super(Walker, self).__init__()
+        super(Walker, self).__init__(start, home)
         """
         Initialise the walker
         Arguments
@@ -23,10 +23,10 @@ class BoundedWalker(Walker):
         right_limit : int
            The right boundary  of walker movement
         """
-        self.start = start
-        self.home = home
-        self.position = start
-        self.steps = 0
+        # self.start = start
+        # self.home = home
+        # self.position = start
+        # self.steps = 0
         self.left_limit = left_limit
         self.right_limit = right_limit
 

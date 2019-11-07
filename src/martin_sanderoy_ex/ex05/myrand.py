@@ -45,12 +45,13 @@ class LCGRand:
         int
             A random number.
         """
-        return RandIter(self, math.inf)
+        # return RandIter(self, math.inf)
+        while True:
+            yield self.rand()
 
 
 class RandIter:
-    def __init__(self, random_number_generator, length, stop=True,
-                 max_iter=10**9):
+    def __init__(self, random_number_generator, length):
         """
         Arguments
         ---------
@@ -63,8 +64,6 @@ class RandIter:
         self.generator = random_number_generator
         self.length = length
         self.num_generated_numbers = None
-        self.stop = stop
-        self.max_iter = max_iter
 
     def __iter__(self):
         """
@@ -100,10 +99,6 @@ class RandIter:
             raise RuntimeError(f'{type(self)} is not initialised')
         if self.num_generated_numbers >= self.length:
             raise StopIteration
-        if self.stop and self.num_generated_numbers > self.max_iter:
-            raise RuntimeError(f'reached maximum iterations = {10**9} '
-                               f'change it or set stop=False for true '
-                               f'infinite')
         self.num_generated_numbers += 1
         return self.generator.rand()
 
